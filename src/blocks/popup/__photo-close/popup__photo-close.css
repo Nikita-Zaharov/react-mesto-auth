@@ -1,0 +1,5 @@
+@media all and (max-width: 560px){
+    .popup__photo-close{
+        width: 20px;
+    }
+}

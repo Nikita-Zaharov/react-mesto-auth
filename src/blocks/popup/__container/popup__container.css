@@ -1,0 +1,15 @@
+.popup__container{
+    z-index: 2;
+    max-width: 430px;
+    background: rgb(255, 255, 255, 100%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin: 0 auto;
+}
+@media all and (max-width: 560px){
+    .popup__container{
+        max-width: 282px;
+    }
+}
