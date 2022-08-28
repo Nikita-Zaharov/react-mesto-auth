@@ -21,9 +21,9 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   }
 
   return (
-    <div className='cell'>
+    <div className="cell">
       <img
-        className='cell__photo'
+        className="cell__photo"
         src={card.link}
         alt={card.name}
         onClick={handleClick}
@@ -31,18 +31,18 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
       <button
         type="button"
         className={`cell__button-delete ${
-          isOwn ? '' : 'cell__button-delete_hidden'
+          isOwn ? "" : "cell__button-delete_hidden"
         }`}
         onClick={handleDeleteClick}
       />
-      <div className='cell__info'>
-        <h2 className='cell__info-title'>{card.name}</h2>
-        <div className='cell__info-like'>
+      <div className="cell__info">
+        <h2 className="cell__info-title">{card.name}</h2>
+        <div className="cell__info-like">
           <button
             onClick={handleLikeClick}
-            type='button'
+            type="button"
             className={`cell__button-like ${
-              isLiked ? 'cell__button-like_active' : ''
+              isLiked ? "cell__button-like_active" : ""
             }`}
           />
           <p className="cell__number-like">{card.likes.length}</p>

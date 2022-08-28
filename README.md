@@ -1,6 +1,6 @@
 # Проектная работа 11
 
-# ССылка на проект 
+# Ссылка на проект 
  https://nikita-zaharov.github.io/mesto-react/
 
 ## Описание 

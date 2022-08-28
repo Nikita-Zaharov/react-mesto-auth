@@ -15,22 +15,20 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null); 
+  const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
- 
 
-
-useEffect(() => {
-  api.getInitialsCard()
+  useEffect(() => {
+    api
+      .getInitialsCard()
       .then((res) => {
-          setCards(res);
+        setCards(res);
       })
       .catch((err) => {
         console.log(`Ошибка ${err}`);
       });
-}, []);
- 
+  }, []);
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -49,7 +47,6 @@ useEffect(() => {
     setIsAddPlacePopupOpen(true);
   }
 
-
   function handleLikeClick(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
 
@@ -64,7 +61,7 @@ useEffect(() => {
         console.log(`Ошибка ${err}`);
       });
 
-      console.log(card._id);
+    console.log(card._id);
   }
 
   function handleCardDelete(card) {
@@ -114,17 +111,16 @@ useEffect(() => {
     setSelectedCard(null);
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     api
-    .getInfoUser()
-    .then((res)=>{
-      setCurrentUser(res)
-    })
-    .catch((err) => {
+      .getInfoUser()
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch((err) => {
         console.log(`Ошибка ${err}`);
       });
-    },[])
-  
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

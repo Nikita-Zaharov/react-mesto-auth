@@ -16,54 +16,53 @@ function Main({
 }) {
   const currentUser = useContext(CurrentUserContext);
   return (
-    <main className='content'>
-      <section className='profile'>
+    <main className="content">
+      <section className="profile">
         <div
-          className='profile__avatar'
+          className="profile__avatar"
           style={{ backgroundImage: `url(${currentUser.avatar})` }}
         >
-          <div onClick={onEditAvatar} className='profile__button-avatar'></div>
+          <div onClick={onEditAvatar} className="profile__button-avatar"></div>
         </div>
-        <div className='profile__info'>
-          <div className='profile__name'>
-            <h1 className='profile__title'>{currentUser.name}</h1>
+        <div className="profile__info">
+          <div className="profile__name">
+            <h1 className="profile__title">{currentUser.name}</h1>
             <button
               onClick={onEditProfile}
-              type='button'
-              className='profile__button-edit'
+              type="button"
+              className="profile__button-edit"
             >
               <img
-                className='profile__edit'
+                className="profile__edit"
                 src={editButton}
-                alt='Изменение профиля'
+                alt="Изменение профиля"
               />
             </button>
           </div>
-          <p className='profile__subtitle'>{currentUser.about}</p>
+          <p className="profile__subtitle">{currentUser.about}</p>
         </div>
         <button
           onClick={onAddPlace}
           type="button"
-          className='profile__button-add'
+          className="profile__button-add"
         >
           <img
-            className='profile__add'
+            className="profile__add"
             src={addButton}
-            alt='Добавление профиля'
+            alt="Добавление профиля"
           />
         </button>
       </section>
-      <section className='photo-grid'>
-         {cards.map((card) => (
-            <Card
-              key={card._id}
-              card={card}
-              onCardClick={onCardClick}
-              onCardLike={onCardLike}
-              onCardDelete={onCardDelete}
-            />
-          ))}
-
+      <section className="photo-grid">
+        {cards.map((card) => (
+          <Card
+            key={card._id}
+            card={card}
+            onCardClick={onCardClick}
+            onCardLike={onCardLike}
+            onCardDelete={onCardDelete}
+          />
+        ))}
       </section>
     </main>
   );
