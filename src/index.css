@@ -49,4 +49,4 @@
 @import url(./blocks/popup/__button-close/_avatar/popup__button-close_avatar.css);
 @import url(./blocks/cell/__info-like/cell__info-like.css);
 @import url(./blocks/cell/__number-like/cell__number-like.css);
-
+@import url(./blocks/cell/__button-delete/_hidden/cell__button-delete_hidden.css);

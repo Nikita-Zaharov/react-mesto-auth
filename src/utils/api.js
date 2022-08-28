@@ -34,7 +34,7 @@ class Api {
             headers: this._headers,
             body: JSON.stringify({
                 name: data.name,
-                about: data.job
+                about: data.about
             })
         })
         .then(this._checkAnswer)
@@ -45,30 +45,20 @@ class Api {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                name: data.mesto,
+                name: data.name,
                 link: data.link
             })
         })
         .then(this._checkAnswer)
     }
-
-    putLike(data){
-        return fetch(this._url+`cards/${data._id}/likes`,{
-            method: 'PUT',
-            headers: this._headers,
-            
+    
+    changeLikeCardStatus(id, isLiked) {
+        return fetch(this._url+`cards/${id}/likes`, {
+          method: isLiked ? 'PUT' : 'DELETE',
+          headers: this._headers,
         })
         .then(this._checkAnswer)
-    }
-
-    deleteLike(data){
-        return fetch(this._url+`cards/${data._id}/likes`,{
-            method: 'DELETE',
-            headers: this._headers,
-            
-        })
-        .then(this._checkAnswer)
-    }
+      }
 
     deleteCard(id){
         return fetch(this._url+`cards/${id}`,{
@@ -83,15 +73,13 @@ class Api {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: data.linkAvatar
+                avatar: data.avatar
             })
         })
         .then(this._checkAnswer)
     }
 
-    getData(){
-        return Promise.all([this.getInfoUser(),this.getInitialsCard()])
-    }
+   
 
 }
 export const api = new Api({
