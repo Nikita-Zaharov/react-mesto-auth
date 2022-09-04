@@ -1,0 +1,10 @@
+.header__nickname {
+    width: 141px;
+    height: 22px;
+    font-size: 18px;
+    margin: 0;
+    line-height: 22px;
+    color: #FFF;
+    align-self: center;
+    text-align: right;
+}
