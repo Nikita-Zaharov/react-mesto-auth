@@ -1,9 +1,0 @@
-.profile__name{
-    display: flex;
-}
-@media all and (max-width: 1100px) {
-    .profile__name{
-        justify-content: center;
-        margin: 22.25px auto 0;
-    }
-}
