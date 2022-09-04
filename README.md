@@ -1,7 +1,7 @@
 # Проектная работа 12
 
 # Ссылка на проект 
- https://nikita-zaharov.github.io/mesto-react/
+https://nikita-zaharov.github.io/react-mesto-auth/
 
 ## Описание 
 Данный проект продолжение работы с сатйом для фотографий mesto.
