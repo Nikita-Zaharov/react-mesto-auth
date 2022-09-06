@@ -1,10 +1,22 @@
 .header__nickname {
-    width: 141px;
-    height: 22px;
-    font-size: 18px;
-    margin: 0;
-    line-height: 22px;
-    color: #FFF;
-    align-self: center;
-    text-align: right;
+  width: 300px;
+  height: 22px;
+  font-size: 18px;
+  margin: 0;
+  line-height: 22px;
+  color: #fff;
+  align-self: center;
+  text-align: right;
+}
+
+@media all and (max-width: 880px) {
+  .header__nickname {
+    align-self: flex-end;
+  }
+}
+
+@media all and (max-width: 580px) {
+  .header__nickname {
+    display: none;
+  }
 }

@@ -1,4 +1,11 @@
 .header__info-box {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media all and (max-width: 580px) {
+  .header__info-box {
+    justify-content: space-between;
+  }
 }

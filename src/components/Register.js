@@ -1,27 +1,14 @@
-import { Link, useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Register({ onRegister }) {
-  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function reset() {
-    setEmail("");
-    setPassword("");
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    onRegister({ email, password }).then(reset);
+    onRegister({ email, password });
   };
-
-  useEffect(() => {
-    if (localStorage.getItem("jwt")) {
-      history.push("/sign-in");
-    }
-  });
 
   return (
     <div className="register">

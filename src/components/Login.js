@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
 
 function Login({ onLogin }) {
-  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const reset = () => {
-    setEmail("");
-    setPassword("");
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    onLogin({ email, password }).then(reset);
+    onLogin({ email, password });
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("jwt")) {
-      history.push("/users/me");
-    }
-  });
   return (
     <div className="login">
       <form className="login__form" onSubmit={handleSubmit}>

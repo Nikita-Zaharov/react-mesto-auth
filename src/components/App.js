@@ -28,10 +28,11 @@ function App() {
   const [isSuccess, setIsSuccess] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isInfoToolTipPopupOpen, setIsInfoToolTipPopupOpen] = useState(false);
+  const [isMenuMobileOpen, setIsMenuMobileOpen] = useState(false);
 
   const history = useHistory();
 
-  function tokenCheck() {
+  function checkToken() {
     const token = localStorage.getItem("jwt");
     if (token) {
       auth
@@ -52,8 +53,8 @@ function App() {
   }
 
   useEffect(() => {
-    tokenCheck();
-  });
+    checkToken();
+  }, []);
 
   const onRegister = ({ email, password }) => {
     auth
@@ -63,7 +64,6 @@ function App() {
           setIsSuccess(true);
           setIsInfoToolTipPopupOpen(true);
           history.push("/sign-in");
-          console.log("register");
         }
       })
       .catch((err) => {
@@ -77,6 +77,7 @@ function App() {
     localStorage.removeItem("jwt");
     setLoggedIn(false);
     history.push("/sign-in");
+    setIsMenuMobileOpen(false);
   };
 
   const onLogin = ({ email, password }) => {
@@ -88,7 +89,6 @@ function App() {
           setLoggedIn(true);
           localStorage.setItem("jwt", res.token);
           history.push("/");
-          console.log("login");
         }
       })
       .catch((err) => {
@@ -167,32 +167,38 @@ function App() {
       });
   }
 
-  function handleUpdateUser(items) {
+  function handleUpdateUser(users) {
     api
-      .editProfile(items)
-      .then((item) => {
-        setCurrentUser(item);
+      .editProfile(users)
+      .then((user) => {
+        setCurrentUser(user);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
   }
-  function handleUpdateAvatar(items) {
+  function handleUpdateAvatar(avatars) {
     api
-      .editAvatar(items)
-      .then((item) => {
-        setCurrentUser(item);
+      .editAvatar(avatars)
+      .then((avatar) => {
+        setCurrentUser(avatar);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
   }
-  function handleAddPlaceSubmit(items) {
+  function handleAddPlaceSubmit(oldCards) {
     api
-      .addCard(items)
+      .addCard(oldCards)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
+  }
+
+  function handleClickOpenMobileMenu() {
+    if (loggedIn) {
+      setIsMenuMobileOpen(!isMenuMobileOpen);
+    }
   }
 
   function closeAllPopups() {
@@ -208,7 +214,13 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
         <div className="page">
-          <Header email={email} loggedIn={loggedIn} onSignOut={onSignOut} />
+          <Header
+            email={email}
+            loggedIn={loggedIn}
+            onSignOut={onSignOut}
+            isOpen={isMenuMobileOpen}
+            onBurgerButton={handleClickOpenMobileMenu}
+          />
           <Switch>
             <ProtectedRoute
               exact

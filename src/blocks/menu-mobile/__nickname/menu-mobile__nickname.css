@@ -1,0 +1,13 @@
+@media all and (max-width: 580px) {
+  .menu-mobile__nickname {
+    margin: 40px 0 18px;
+    padding: 0;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #ffffff;
+    align-self: center;
+  }
+}
