@@ -167,27 +167,27 @@ function App() {
       });
   }
 
-  function handleUpdateUser(users) {
+  function handleUpdateUser(user) {
     api
-      .editProfile(users)
+      .editProfile(user)
       .then((user) => {
         setCurrentUser(user);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
   }
-  function handleUpdateAvatar(avatars) {
+  function handleUpdateAvatar(avatar) {
     api
-      .editAvatar(avatars)
+      .editAvatar(avatar)
       .then((avatar) => {
         setCurrentUser(avatar);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
   }
-  function handleAddPlaceSubmit(oldCards) {
+  function handleAddPlaceSubmit(newCard) {
     api
-      .addCard(oldCards)
+      .addCard(newCard)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
